@@ -14,7 +14,11 @@
 .full-width {
   width: 100%;
 }
- 
+
+
+.messageService{
+  color:red;
+}
 .dark-primary-color    { background: #388E3C; }
 .default-primary-color { background: #4CAF50; }
 .light-primary-color   { background: #C8E6C9; }
