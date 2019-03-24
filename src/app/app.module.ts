@@ -12,9 +12,10 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FirestoreSettingsToken} from '@angular/fire/firestore';
+import { UsersListModule } from './users-list/users-list.module';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,6 +25,7 @@ import { FirestoreSettingsToken} from '@angular/fire/firestore';
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     LoginModule,
     CreateUserModule,
+    UsersListModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],

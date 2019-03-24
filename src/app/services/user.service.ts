@@ -44,6 +44,11 @@ export class UserService {
     });
   }
 
+
+  deleteUser(user: User) {
+
+  }
+
   getUsersList(): Observable<User[]> {
     this.users = this.usersCollection.valueChanges();
     return this.users;
