@@ -47,6 +47,8 @@ export class UserService {
 
   deleteUser(user: User) {
 
+    this.usersCollection.doc(user.id).delete();
+
   }
 
   getUsersList(): Observable<User[]> {

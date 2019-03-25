@@ -6,3 +6,9 @@ table {
     font-size: 14px;
     width: 100%;
   }
+
+  
+  tr:hover {
+    border: 2px solid;
+    padding: 10px;   
+  }

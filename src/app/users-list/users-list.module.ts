@@ -4,12 +4,16 @@ import {MatTableModule} from '@angular/material/table';
 import { UsersListComponent } from './users-list.component';
 import { MatFormFieldModule } from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   imports: [
     CommonModule,
     MatTableModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatCheckboxModule,
+    MatIconModule
   ],
   declarations: [UsersListComponent],
   exports: [UsersListComponent]
