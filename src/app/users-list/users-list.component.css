@@ -12,3 +12,7 @@ table {
     border: 2px solid;
     padding: 10px;   
   }
+
+  mat-icon{
+    cursor: pointer;
+  }

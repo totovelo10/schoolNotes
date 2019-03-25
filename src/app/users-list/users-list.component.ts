@@ -49,7 +49,15 @@ export class UsersListComponent implements OnInit {
   deleteUser(user: User) {
     this.userService.deleteUser(user);
   }
+  /**Delete Users from list */
+  deleteUsers(users: User[]) {
+    this.userService.deleteUsers(users);
+    users.forEach(usr => {
+      this.selection.deselect(usr);
+    });
 
+    console.log(this.selection.selected);
+  }
   /** The label for the checkbox on the passed row 
   checkboxLabel(row?: User): string {
     if (!row) {

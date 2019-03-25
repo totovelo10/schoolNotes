@@ -50,6 +50,13 @@ export class UserService {
     this.usersCollection.doc(user.id).delete();
 
   }
+  deleteUsers(users: User[]) {
+
+    users.forEach(user => {
+      this.usersCollection.doc(user.id).delete();
+    });
+  }
+
 
   getUsersList(): Observable<User[]> {
     this.users = this.usersCollection.valueChanges();

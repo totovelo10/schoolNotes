@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   imports: [
     CommonModule,
@@ -13,7 +14,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule
   ],
   declarations: [UsersListComponent],
   exports: [UsersListComponent]
