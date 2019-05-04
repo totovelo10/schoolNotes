@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { User } from '../user';
 import {
   AngularFirestore,
-  AngularFirestoreCollection
+  AngularFirestoreCollection,
+  AngularFirestoreDocument
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 @Injectable({
@@ -24,7 +25,7 @@ export class UserService {
       user.firstname === '' ||
       user.email === '' ||
       user.type === '' ||
-      user.dateNaissance === ''
+      user.dateNaissance === null
     ) {
       return 'Formulaire incomplet!';
     } else {
@@ -39,7 +40,7 @@ export class UserService {
       name: user.name,
       firstname: user.firstname,
       email: user.email,
-      dateNaissance: user.dateNaissance,
+      dateNaissance: user.dateNaissance.locale('fr').format(),
       type: user.type
     });
   }
@@ -61,5 +62,22 @@ export class UserService {
   getUsersList(): Observable<User[]> {
     this.users = this.usersCollection.valueChanges();
     return this.users;
+  }
+
+  getUser(id: string): Observable<User> {
+    const user = this.usersCollection.doc<User>(id);
+
+    return user.valueChanges();
+  }
+  updateUser(user: User): string {
+    console.log(user);
+    this.usersCollection.doc(user.id).update({
+      name: user.name,
+      firstname: user.firstname,
+      email: user.email,
+      dateNaissance: user.dateNaissance.locale('fr').format(),
+      type: user.type
+    });
+    return'user updated';
   }
 }

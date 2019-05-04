@@ -7,6 +7,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import { UsersListRoutingModule } from './users-list-routing.module';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,7 +17,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatInputModule,
     MatCheckboxModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    UsersListRoutingModule
   ],
   declarations: [UsersListComponent],
   exports: [UsersListComponent]

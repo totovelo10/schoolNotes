@@ -1,8 +1,8 @@
 
 <mat-form-field>
+
     <input matInput  maxlength="10" (keyup)="applyFilter($event.target.value)" placeholder="Recherche"  >
   </mat-form-field>
-  
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!-- Checkbox Column -->
   <ng-container matColumnDef="select">
@@ -13,7 +13,7 @@
         >
 </mat-checkbox>
     </th>
-    <td mat-cell *matCellDef="let row">
+    <td mat-cell *matCellDef="let row" (click)="selection.toggle(row)">
       <mat-checkbox (click)="$event.stopPropagation()"
                     (change)="$event ? selection.toggle(row) : null"
                     [checked]="selection.isSelected(row)"
@@ -43,7 +43,7 @@
     <!-- DateNaissance Column -->
     <ng-container matColumnDef="dateNaissance">
       <th mat-header-cell *matHeaderCellDef> Date de Naissance </th>
-      <td mat-cell *matCellDef="let user"> {{user.dateNaissance}} </td>
+      <td mat-cell *matCellDef="let user"> {{user.dateNaissance| date:'shortDate'}} </td>
     </ng-container>
     <!-- Type Column -->
     <ng-container matColumnDef="type">
@@ -56,13 +56,15 @@
       <th mat-header-cell *matHeaderCellDef> Email </th>
       <td mat-cell *matCellDef="let user"> {{user.email}} </td>
     </ng-container>
-    <ng-container matColumnDef="icons">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let user"></td>
-    </ng-container>
-    <mat-icon>delete</mat-icon>
+
+    <!-- Edit Column -->
+    <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>Edit</th>
+        <td mat-cell *matCellDef="let user"><button  mat-icon-button (click)= editUser(user)><mat-icon>edit</mat-icon></button></td>
+      </ng-container>
+    
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-        (click)="selection.toggle(row)" >
+         >
     </tr>
   </table>

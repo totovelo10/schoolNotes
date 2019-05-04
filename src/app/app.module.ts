@@ -13,6 +13,12 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FirestoreSettingsToken} from '@angular/fire/firestore';
 import { UsersListModule } from './users-list/users-list.module';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { AppRoutingModule } from './app-routing.module';
+import { EditUserModule } from './edit-user/edit-user.module';
+import { PageNotFoundModule } from './page-not-found/page-not-found.module';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,8 +32,12 @@ import { UsersListModule } from './users-list/users-list.module';
     LoginModule,
     CreateUserModule,
     UsersListModule,
+    EditUserModule,
     BrowserAnimationsModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    MatToolbarModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    AppRoutingModule,
+    PageNotFoundModule,
   ],
   providers: [{ provide: FirestoreSettingsToken, useValue: {}}],
   bootstrap: [AppComponent]

@@ -1,27 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, LOCALE_ID } from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatTableDataSource} from '@angular/material';
 import {User} from '../user';
 import { UserService } from '../services/user.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import localeFr from '@angular/common/locales/fr';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeFr);
 
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.css']
+  styleUrls: ['./users-list.component.css'],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'fr-FR' }
+  ]
+
 })
 export class UsersListComponent implements OnInit {
-  displayedColumns: string[] = ['select', 'delete', 'name', 'firstname', 'type', 'dateNaissance', 'email', 'icons'];
+  displayedColumns: string[] = ['select', 'delete', 'name', 'firstname', 'type', 'dateNaissance', 'email', 'edit'];
   dataSource: MatTableDataSource<User>;
   userlist: User [];
   selection = new SelectionModel<User>(true, []);
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
     this.userService.getUsersList().subscribe(user => {
     this.dataSource = new MatTableDataSource(user);
     console.log(this.dataSource);
+    console.log(this.selection.selected);
     });
   }
 
@@ -48,6 +60,7 @@ export class UsersListComponent implements OnInit {
   /**Delete User from list */
   deleteUser(user: User) {
     this.userService.deleteUser(user);
+    this.selection.clear();
   }
   /**Delete Users from list */
   deleteUsers(users: User[]) {
@@ -58,11 +71,10 @@ export class UsersListComponent implements OnInit {
 
     console.log(this.selection.selected);
   }
-  /** The label for the checkbox on the passed row 
-  checkboxLabel(row?: User): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row + 1}`;
-  }**/
+
+  editUser(user: User) {
+
+    this.router.navigate(['/edituser', user.id]);
+  }
+
 }

@@ -1,11 +1,8 @@
 <div fxLayout="column" fxLayoutAlign="center center">
-  <mat-toolbar class="default-primary-color text-primary-color"
-    >School Notes</mat-toolbar
-  >
   <div class="cot">
   <h3>Formulaire Utilisateur</h3>
   <div>
-    <form (ngSubmit)="onSubmit()" #userForm="ngForm" class="form">
+    <form (ngSubmit)="onSubmit($event)" #userForm="ngForm" class="form">
       <div fxLayout="column" fxLayoutAlign="space-between">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Nom</mat-label>
@@ -46,12 +43,12 @@
         <mat-form-field appearance="outline" class="full-width">
           <input
             matInput
+            [ngModel]="user.dateNaissance"
             [matDatepicker]="picker"
+            (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)"
             placeholder="Date de naissance"
-            [(ngModel)]="user.dateNaissance"
             name="picker"
             required
-            #picker="ngModel"
           />
           <mat-datepicker-toggle
             matSuffix

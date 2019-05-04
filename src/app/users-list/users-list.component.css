@@ -1,18 +1,22 @@
 table {
-    width: 100%;
-  }
-  
-  .mat-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
+  width: 100%;
+}
 
-  
-  tr:hover {
-    border: 2px solid;
-    padding: 10px;   
-  }
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
 
-  mat-icon{
-    cursor: pointer;
-  }
+tr:hover {
+  border: 2px solid;
+  padding: 10px;
+}
+
+mat-icon {
+  cursor: pointer;
+  border: 0;
+}
+button:focus {
+  border: 0;
+  outline: none;
+}
