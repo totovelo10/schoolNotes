@@ -9,6 +9,7 @@ import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
 registerLocaleData(localeFr);
 
+
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',

@@ -17,6 +17,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
 import { EditUserModule } from './edit-user/edit-user.module';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
+import { ClassesModule } from './classes/classes.module';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { PageNotFoundModule } from './page-not-found/page-not-found.module';
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AppRoutingModule,
     PageNotFoundModule,
+    ClassesModule,
   ],
   providers: [{ provide: FirestoreSettingsToken, useValue: {}}],
   bootstrap: [AppComponent]
